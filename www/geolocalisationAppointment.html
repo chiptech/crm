@@ -1,0 +1,205 @@
+<html>
+<head>
+     <title>Map</title>
+	
+<script type="text/javascript" src="js/jquery.js"></script>
+ 
+
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+     <script type="text/javascript" src="jquery.xdomainajax.js"></script>
+	 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"> </script>
+	 
+	 
+	 
+    <script type="text/javascript" src="js/jq.mobi.min.js"></script>
+    <script src="js/mobiscroll.jqmobi.js" type="text/javascript"></script>
+    <script src="js/mobiscroll.core.js" type="text/javascript"></script>
+    <script src="js/mobiscroll.datetime.js" type="text/javascript"></script>
+<script src="js/script.js" type="text/javascript"></script>
+    <script src="js/i18n/mobiscroll.core-fr.js" type="text/javascript"></script>
+    <script src="js/i18n/mobiscroll.datetime-fr.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/Geolocalisation_appointment.js"></script>
+<script type="text/javascript" src="js/infoBox.js"></script>
+	  <link href="css/mobiscroll.core.css" rel="stylesheet" type="text/css">
+    <link href="css/mobiscroll.android.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/jquery.mobile-1.1.css" />
+<link rel="stylesheet" href="css/styles.css" />
+ 
+	</head>
+<script> 
+	function goHome()
+	{
+	window.location="accueil.html";	
+	}
+    function retour()
+	{
+	window.location="accueil.html";	
+	}
+	    function deconexion()
+{
+
+	sessionStorage.setItem('cleL', ' ');
+    		sessionStorage.setItem('cleP', ' ');
+    		sessionStorage.setItem('cleD', ' ');
+    		sessionStorage.setItem('cleO',' ');
+    		window.location = "index.html";
+
+}
+    </script>
+<style>
+
+
+ .leftPosition {
+	float: right;
+	margin-left: 12px;
+ }
+ #wrapper { 
+	height: 90%; 
+	overflow: auto;
+} 
+
+#map_canvas
+{
+width: 95%; 
+height: 80%;
+
+
+}
+
+
+	       		input {
+font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+border:1px solid #ccc;
+font-size:15px;
+width:57px;
+min-height:23px;
+display:block;
+margin-left:5px;
+margin-bottom:10px;
+margin-top:5px;
+outline: none;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-o-border-radius:5px;
+-ms-border-radius:5px;
+border-radius:5px;
+}
+input[type=submit] {
+cursor: pointer;
+width:55px;
+height:40px;
+font-size:20px;
+font-weight:bold;
+}
+input[type=button] {
+cursor: pointer;
+width:220px;
+}
+
+largeur
+{
+width:50px;
+}	
+.imageHome{
+background-image:url(img/home.png);
+}
+.action-iconDecx {
+			position: absolute;
+			right: 10px;
+			margin-top: 5px;
+		}  
+		
+		div.dw-i
+		{
+		color:white;
+		font-size:20;
+		}
+		div.ui-content
+		{
+width:100%;
+
+		height:100%;
+		}
+</style>
+<body onload=''>
+  
+ <div data-role="header" data-theme='b'>
+  <ul>
+<center><img src="img/logoHeader.png"> <span style="color:#FFFFFF"> Microsoft Dynamics CRM</span> 
+
+</center> </ul>
+	<p></p>
+  </div>
+
+ 
+ <div  data-role="content" class="ui-content" role="main" >
+
+   <div  id="List"  >
+<div id="busy"/>Chargement...</div>	
+<input id="X" name="X" type="hidden" /> 
+   
+   <div id="map_canvas" >
+    </div>
+	
+		<table style="width:95%">
+	<tr>
+	<td style="width:30%">
+<span> Date début	<input id='debut' class="i-txt"  ></input> </span>
+
+
+</td>
+	<td style="width:30%">
+	
+<span> Date Fin	<input id='fin' class="i-txt" ></span>	</input>
+
+	
+	</td >
+	
+		<td style="width:20%">
+	
+<div data-corners="true" style="width:100%" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" data-inline="true" data-mini="false" class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-fullsize ui-btn-up-c" aria-disabled="false">
+<span onclick="affichAppointment();" class="ui-btn-inner ui-btn-corner-all">
+<span class="ui-btn-text"  >ok</span></span>
+</div>
+	</td >
+
+</tr>
+</table>
+	
+
+	
+</div>
+ 
+	
+	
+	
+	
+	
+	<div data-role="footer" data-theme='b'  data-position="fixed" style="background-image:url(img/barreHeader.PNG);"> 
+	<!--<a href="accueil.html" data-role="button" data-theme="c" data-rel="back" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Retour</span></span></a> -->
+
+	<table >
+	<tr>
+	<td style="
+    background-image: url(img/barreHeader.PNG);width:40%;
+">
+<input type="button" onclick="retour();"  class="ui-link" data-inline="true" value="Retour"></input>
+</td>
+	<td style="
+    background-image: url(img/barreHeader.PNG);width:60%;
+">
+	<center>
+	<img src="img/logoHome.png" data-inline="true" onclick="goHome();" > 
+	</center>
+	
+	</td>
+
+</tr>
+</table>
+</div>
+	
+	
+	</body>
+</html>

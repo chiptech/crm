@@ -1,0 +1,152 @@
+<html class="ui-mobile">
+<head>
+<script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<script type="text/javascript" src="jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="discovery.js" type="text/javascript"></script>  
+<script src="cordova-2.1.0.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.1.js"></script>
+<script src="js/iscroll1.js"></script>
+<script src="js/redirectionOrg.js" type="text/javascript"></script> 
+<link rel="stylesheet" href="css/styles.css" />
+<script src="js/iscroll-lite.js"></script>
+<link rel="stylesheet" href="css/jquery.mobile-1.1.css" />
+
+
+
+<style>
+body{
+font-family:'Open Sans',sans-serif;
+font-weight: 400;
+font-size: 80pt;
+padding-top:0px;
+}
+:invalid {
+background-color: #F0FFFF;
+border-color: #e88;
+-webkit-box-shadow: 0 0 5pxrgba(255, 0, 0, .8);
+-moz-box-shadow: 0 0 5pxrbba(255, 0, 0, .8);
+-o-box-shadow: 0 0 5pxrbba(255, 0, 0, .8);
+-ms-box-shadow: 0 0 5pxrbba(255, 0, 0, .8);
+box-shadow:0 0 5pxrgba(255, 0, 0, .8);
+}
+:required {
+border-color: #88a;
+-webkit-box-shadow: 0 0 5pxrgba(0, 0, 255, .5);
+-moz-box-shadow: 0 0 5pxrgba(0, 0, 255, .5);
+-o-box-shadow: 0 0 5pxrgba(0, 0, 255, .5);
+-ms-box-shadow: 0 0 5pxrgba(0, 0, 255, .5);
+box-shadow: 0 0 5pxrgba(0, 0, 255, .5);
+}
+form {
+width:300px;
+margin: 20px auto;
+
+}
+
+input {
+font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+border:1px solid #ccc;
+font-size:20px;
+width:300px;
+min-height:30px;
+display:block;
+margin-bottom:15px;
+margin-top:5px;
+outline: none;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-o-border-radius:5px;
+-ms-border-radius:5px;
+border-radius:5px;
+}
+select {
+font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+border:1px solid #ccc;
+font-size:20px;
+width:300px;
+min-height:30px;
+display:block;
+margin-bottom:15px;
+margin-top:5px;
+outline: none;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-o-border-radius:5px;
+-ms-border-radius:5px;
+border-radius:5px;
+}
+input[type=submit] {
+background:none;
+padding:10px;
+cursor: pointer;
+}
+label{
+cursor: pointer;
+font-weight:500;
+}
+.imageHeader{
+background-image:url(img/barreHeader.PNG);
+height:63px;
+}
+.error {
+  border:2px solid red;
+}
+.divDisplay
+{
+display : block;
+}
+</style>
+</head>
+<body>
+ <div data-role="header" data-theme='b' class="imageHeader">
+	<center><img src="img/logoHeader.png"> <span style="color:#FFFFFF"> Microsoft Dynamics CRM</span> </center>
+	<p></p>
+  </div>
+  
+  <div data-role="content" class="ui-content" role="main">
+<form id="form">
+	
+	<div  id="List"  >
+<div id="busy" />Chargement...</div>	
+<input id="X" name="X" type="hidden" /> 
+
+<h1> <span style="font-size:18px">Nom complet : </span></h1>
+<input type="text" id="name" name="name" placeholder="nom utilisateur" required>
+
+<h1> <span style="font-size:18px">Mot de passe :</span></h1>
+<input type="password" id="password" name="password" placeholder="*****************" required>
+
+<h1> <span style="font-size:18px">Nom de serveur :</span></h1>
+<select id="selectProtocol">
+    <option value="1">http</option>
+    <option value="2">https</option>
+</select>
+<input type="text" id="AddServ"  placeholder="adresse Serveur" required>
+<table style="width:100%;">
+<tr>
+<td style="width:70%;">
+<select id="orgName">
+
+</select>
+ </td>
+ <td style="width:30%;">
+<input type="submit" id="submitForm" value="Get Org"/>
+ </td>
+ </tr>
+ </table>
+
+</form>
+
+
+</div>
+
+</body>
+</html>

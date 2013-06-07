@@ -1,0 +1,44 @@
+
+
+
+#paging_container6{
+    background-color: white;
+    color: blue;
+    cursor: default;
+}
+
+.ellipse{
+	float: left;
+}
+
+.container{
+	width: 260px;
+	float: left;
+	margin: 50px 10px 10px;
+	padding: 20px;
+	background-color: white;
+}
+
+.page_navigation , .alt_page_navigation{
+	padding-bottom: 10px;
+}
+
+.page_navigation a, .alt_page_navigation a{
+	padding:10px 5px;
+	margin:5px;
+	color:white;
+	text-decoration:none;
+
+	font-family: Tahoma;
+	font-size: 12px;
+	background-color:#0066B3;
+	
+}
+.active_page{
+	background-color:white !important;
+	color:black !important;
+}	
+
+.content, .alt_content{
+	color: black;
+}

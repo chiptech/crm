@@ -1,0 +1,338 @@
+<html class="ui-mobile"><head><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<script type="text/javascript" src="jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.pajinate.js"></script>
+		
+    <script src="js/annonce.js" type="text/javascript"></script>
+
+<script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.1.js"></script>
+<script src="js/iscroll1.js"></script>
+
+<script src="js/iscroll-lite.js"></script>
+<link rel="stylesheet" href="css/jquery.mobile-1.1.css" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/styles1.css" />
+<script type="text/javascript">
+
+				
+
+
+
+	function goHome()
+	{
+	window.location="accueil.html";	
+	}
+     function deconexion()
+{
+
+	sessionStorage.setItem('cleL', ' ');
+    		sessionStorage.setItem('cleP', ' ');
+    		sessionStorage.setItem('cleD', ' ');
+    		sessionStorage.setItem('cleO',' ');
+    		window.location = "index.html";
+
+}
+	
+function go()
+{
+
+window.location = "index.html";
+}
+    function deconexion()
+{
+
+	sessionStorage.setItem('cleL', ' ');
+    		sessionStorage.setItem('cleP', ' ');
+    		sessionStorage.setItem('cleD', ' ');
+    		sessionStorage.setItem('cleO',' ');
+    		window.location = "index.html";
+
+}
+
+
+
+var myScroll;
+function loaded() {
+ myScroll = new iScroll('wrapper');
+}
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+/* * * * * * * *
+ *
+ * Use this for high compatibility (iDevice + Android)
+ *
+ */
+document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+/*
+ * * * * * * * */
+</script>
+
+<style type="text/css" media="all">
+body,ul,li {
+	padding:0;
+	margin:0;
+	border:0;
+}
+
+body {
+	font-size:12px;
+	-webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+	font-family:helvetica;
+}
+
+#header {
+	position:absolute; z-index:2;
+	top:0; left:0;
+	width:100%;
+	height:100px;
+	line-height:60px;
+	background-color:#d51875;
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #fe96c9), color-stop(0.05, #d51875), color-stop(1, #7b0a2e));
+	background-image:-moz-linear-gradient(top, #fe96c9, #d51875 5%, #7b0a2e);
+	background-image:-o-linear-gradient(top, #fe96c9, #d51875 5%, #7b0a2e);
+	padding:0;
+	color:#eee;
+	font-size:20px;
+	text-align:center;
+}
+
+#header a {
+	color:#f3f3f3;
+	text-decoration:none;
+	font-weight:bold;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.5);
+}
+
+
+
+#wrapper {
+	position:absolute; z-index:1;
+	top:170px; bottom:48px; left:0;
+	width:100%;
+	background:#fafafa;
+	overflow:auto;
+}
+
+#scroller {
+	position:absolute; z-index:1;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	width:100%;
+	padding:0;
+}
+
+#scroller ul {
+	list-style:none;
+	padding:0;
+	margin:0;
+	width:100%;
+	text-align:left;
+}
+
+#scroller li {
+	padding:0 10px;
+	height:40px;
+	line-height:50px;
+	border-bottom:1px solid #ccc;
+	border-top:1px solid #fff;
+	background-color:#fafafa;
+	font-size:12px;
+}
+.imageHeader{
+background-image:url(img/barreHeader.PNG);
+height:63px;
+}
+#footer {
+	position:absolute; z-index:2;
+	bottom:0; left:0;
+	width:100%;
+	height:48px;
+background-color:blue;
+background-image:url(img/barreHeader.PNG);
+
+	padding:0;
+	border-top:1px solid #444;
+}
+.action-iconDecx {
+			position: absolute;
+			right: 10px;
+			margin-top: 5px;
+			margin:10px;
+		}  
+			.action-iconLogo {
+			position: absolute;
+			left: 10px;
+			margin-top: 5px;
+			margin:10px;
+		}
+	.divModalDialog:target  { display:block; }
+      
+.divModalDialog div  {
+	       /* either absolute or fixed */
+		    position:fixed;
+		    top:0%;
+		    width:100%;
+		    height:100%;
+			background:#FFFFFF;
+			overflow: auto;
+            /* rounded corners */
+	        -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            z-index:102;
+			padding-left: 20px;
+			
+	    }
+	 
+
+
+ul{border:0; margin:0; padding:0;}
+
+#pagination-flickr li{
+border:0; margin:0; padding:0;
+font-size:11px;
+list-style:none;
+}
+#pagination-flickr a{
+border:solid 1px #DDDDDD;
+margin-right:2px;
+}
+#pagination-flickr .previous-off,
+#pagination-flickr .next-off {
+color:#666666;
+display:block;
+float:left;
+font-weight:bold;
+padding:3px 4px;
+}
+#pagination-flickr .next a,
+#pagination-flickr .previous a {
+font-weight:bold;
+border:solid 1px #FFFFFF;
+} 
+#pagination-flickr .active{
+color:#ff0084;
+font-weight:bold;
+display:block;
+float:left;
+padding:4px 6px;
+}
+#pagination-flickr a:link,
+#pagination-flickr a:visited {
+color:#0063e3;
+display:block;
+float:left;
+padding:3px 6px;
+text-decoration:none;
+}
+#pagination-flickr a:hover{
+border:solid 1px #666666;
+}
+
+#triangle{
+	display: inline-block;
+	border-bottom: 7px solid #FFFFFF;
+	border-top: 7px solid #FFFFFF;
+	border-left: 10px solid #AABBCC;
+
+}
+ 
+
+</style>
+<title></title></head>
+<body class="ui-mobile-viewport ui-overlay-c"><div data-role="page"  tabindex="0" class="ui-page ui-body-c ui-page-active" style="min-height: 442px;">
+
+ <div data-role="header" data-theme="b" class="imageHeader ui-header ui-bar-b" role="banner">
+	
+	
+	<center style="
+    width: 100%;
+    margin-top: -7;">
+	<img src="img/logoHeader.png" style="
+    margin-top: 5;"> <span style="color:#FFFFFF"> Microsoft Dynamics CRM</span> 
+	
+</center>
+
+
+	
+  </div>
+  	 <div data-role="content" class="ui-content" role="main">
+
+	 <table style="width:100%" border="0"> 
+<tr>
+<td> 
+  <h1> <span style="font-size:24px" data-inline="true" > Annonces </span></h1>
+  </td>
+  <td>
+	
+	</td>
+	</tr>
+	</table>
+<center>
+<div id='page'> </div>
+</center>
+	<div  id="List"  >
+<div id="busy" style="width: 170;"/>Chargement...</div>	
+<input id="X" name="X" type="hidden"  /> 
+<div id="wrapper" style="overflow: hidden;">
+
+
+	
+	<div id="scroller" style="-webkit-transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, 0px) scale(1) translateZ(0px);">
+
+		<ul id="thelist" class ="content">
+		
+		
+
+						
+					</ul>
+				
+		
+	
+		
+		
+	</div>
+
+
+	<div style="position: absolute; z-index: 100; width: 7px; bottom: 2px; top: 2px; right: 1px; pointer-events: none; -webkit-transition: opacity 0ms 0ms; overflow: hidden; opacity: 1;">
+	<div style="position: absolute; z-index: 100; background-color:#d51875;; border: 1px solid rgba(255, 255, 255, 0.901961); -webkit-background-clip: padding-box; box-sizing: border-box; width: 100%; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; pointer-events: none; -webkit-transition: -webkit-transform 0ms cubic-bezier(0.33, 0.66, 0.66, 1); -webkit-transform: translate(0px, 0px) translateZ(0px); height: 28px;">
+	</div>
+	</div>
+	</div>
+
+
+	
+</div>
+	
+<div id="viewAnnonce" class="divModalDialog" style='margin-left:-15;'></div>
+
+<div data-role="footer" data-theme='b'  data-position="fixed"> 
+	<!--<a href="accueil.html" data-role="button" data-theme="c" data-rel="back" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Retour</span></span></a> -->
+
+	<table>
+	<tr>
+	<td style="width:40%">
+<input type="button" onclick="goback();"  class="ui-link" data-inline="true" value="Retour"></input>
+</td>
+	<td style="width:60%">
+	
+	<img src="img/logoHome.png" data-inline="true" onclick="goHome();" > 
+
+	
+	</td >
+<td >
+
+
+</td>
+</tr>
+</table>
+</div>
+
+</div></body></html>

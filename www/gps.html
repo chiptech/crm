@@ -1,0 +1,215 @@
+<html>
+<head>
+     <title>Map</title>
+	
+<script type="text/javascript" src="jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+ 
+
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.1.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+     <script type="text/javascript" src="jquery.xdomainajax.js"></script>
+	 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"> </script>
+    <script type="text/javascript" src="js/crm_googleMap.js"></script>
+
+	<link rel="stylesheet" href="css/jquery.mobile-1.1.css" />
+<link rel="stylesheet" href="css/styles.css" />
+	</head>
+<script> 
+	function goHome()
+	{
+	window.location="accueil.html";	
+	}
+    function retour()
+	{
+	window.location=sessionStorage.getItem('EntityName')+"Form.html";	
+	}
+	    function deconexion()
+{
+
+	sessionStorage.setItem('cleL', ' ');
+    		sessionStorage.setItem('cleP', ' ');
+    		sessionStorage.setItem('cleD', ' ');
+    		sessionStorage.setItem('cleO',' ');
+    		window.location = "index.html";
+
+}
+    </script>
+<style>
+
+li .list-icon1 {
+	float: left;
+	margin-right: 12px;
+	margin-top: 0px;
+	/* TODO: use 100x100 pics instead of scaling */ 
+ }
+ .leftPosition {
+	float: right;
+	margin-left: 12px;
+ }
+ #wrapper { 
+	height: 283px; 
+	overflow: auto;
+} 
+
+#map_canvas
+{
+width: 100%; 
+height: 380px;
+
+}
+
+	    .divModalDialog:target  { display:block; }
+  
+		  .divModalDialog div h1  {
+            width:100%;
+            font-size:2em;
+            color:#dadada;
+            z-index:103;
+            /* add shadows to text */
+            -moz-text-shadow: 10px 3px 4px 6px rgba(0,0,0,0.9);  
+            -webkit-text-shadow: 3px 4px 6px rgba(0,0,0,0.9);  
+            text-shadow: 10px 4px 6px rgba(0,0,0,0.9); 
+        }	
+	    .divModalDialog  {
+
+		    bottom:10%;
+	         overflow:auto;
+	    }
+	       
+ 
+        /*** navigation controls style: highest z-index ! ***/
+	    .divModalDialog ul a  {
+		    padding:7px;
+		    font-size:1.6em;
+		    font-weight:bold;
+		    color:white;
+		    text-decoration:none;
+		    border: solid 1px Gray;
+		    /* rounded corners */
+		    -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            z-index:110;
+	    }
+		input {
+font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+border:1px solid #ccc;
+font-size:15px;
+width:57px;
+min-height:23px;
+display:block;
+margin-left:5px;
+margin-bottom:10px;
+margin-top:5px;
+outline: none;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-o-border-radius:5px;
+-ms-border-radius:5px;
+border-radius:5px;
+}
+input[type=submit] {
+cursor: pointer;
+width:55px;
+height:40px;
+font-size:20px;
+font-weight:bold;
+}
+input[type=button] {
+cursor: pointer;
+width:220px;
+}
+
+largeur
+{
+width:50px;
+}	
+.divModalDial:target  { display:block; }
+        
+        /*** virtual frame containing Yes or No ***/
+.divModalDial div  {
+	       /* either absolute or fixed */
+		    position:fixed;
+		    top:0%;
+		    width:100%;
+		    height:100%;
+			background:#FFFFFF;
+			overflow: auto;
+            /* rounded corners */
+	        -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            z-index:102;
+			padding-left: 20px;
+	    }
+		li .action-icon1 {
+			position: absolute;
+			right: 30px;
+			margin-top: -28px;
+		}
+	    	.action-iconLogo {
+			position: absolute;
+			left: 10px;
+			margin-top: 5px;
+		}
+		
+.imageHome{
+background-image:url(img/home.png);
+}
+.action-iconDecx {
+			position: absolute;
+			right: 10px;
+			margin-top: 5px;
+		}  
+</style>
+<body onload='call()'>
+  
+ <div data-role="header" data-theme='b'>
+  <ul>
+<center><img src="img/logoHeader.png"> <span style="color:#FFFFFF"> Microsoft Dynamics CRM</span> 
+
+</center> </ul>
+	<p></p>
+  </div>
+
+ 
+ <div data-role="content" class="ui-content" role="main">
+
+   <div  id="List"  >
+<div id="busy"/>Chargement...</div>	
+<input id="X" name="X" type="hidden" /> 
+   
+   <div id="map_canvas" >
+    </div>
+</div>
+ 
+	
+	
+	<div data-role="footer" data-theme='b'  data-position="fixed" style="background-image:url(img/barreHeader.PNG);"> 
+	<!--<a href="accueil.html" data-role="button" data-theme="c" data-rel="back" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-btn-inline ui-shadow ui-btn-corner-all ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Retour</span></span></a> -->
+
+	<table >
+	<tr>
+	<td style="
+    background-image: url(img/barreHeader.PNG);width:40%;
+">
+<input type="button" onclick="retour();"  class="ui-link" data-inline="true" value="Retour"></input>
+</td>
+	<td style="
+    background-image: url(img/barreHeader.PNG);width:60%;
+">
+	<center>
+	<img src="img/logoHome.png" data-inline="true" onclick="goHome();" > 
+	</center>
+	
+	</td>
+
+</tr>
+</table>
+</div>
+	
+	
+	</body>
+</html>
