@@ -240,11 +240,9 @@ getFormEntityMobile(tabNameEntity[numTabEnCours]);
 }
 if(numTabEnCours==10)
 {
-$('#busy').hide();	
 numTabEnCours=0;
-
 fillDB();
-
+$('#busy').hide();	
 window.location = "accueil.html";
 
 }
@@ -254,18 +252,15 @@ window.location = "accueil.html";
 
 function fillDB()
 {
-	 
 	 document.addEventListener("deviceready", constructionBaseLocal , false);
- 	// initDB("contact");
-	// initDB("appointment");
 	
 }
 
 function constructionBaseLocal()
 {
    initDB("account");
-	//initDB("contact");
-	// initDB("appointment");
+   initDB("contact");
+   initDB("appointment");
   navigator.notification.alert("BD created with Succes!");
 }
 
