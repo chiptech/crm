@@ -31,7 +31,7 @@ function getFSFail(evt) {
 
 
 function init() {
-	sessionStorage.setItem('hostName', '10.13.121.65');
+	sessionStorage.setItem('hostName', '10.13.121.62');
 
 if((window.localStorage.getItem("login")==null)||(window.localStorage.getItem("pw")==null) ||(window.localStorage.getItem("urlOrg")==null) || 
 (window.localStorage.getItem("account")==null)||(window.localStorage.getItem("appointment")==null) ||(window.localStorage.getItem("contact")==null)
