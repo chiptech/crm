@@ -6,17 +6,30 @@ var DataType;
 
 
 function afficherCharts(entityName) {
-
-          $('#viewcharts').append('<div  id="divFrame">  </div>');
-		  $('#divFrame').append('<SELECT style="width:95%;" id="charts" size="1" onChange="charts();">');
-		  $('#divFrame').append('</SELECT>');
-		  $('#divFrame').append('<center><div id ="chartDivId" style="margin-top:20px; margin-down:20px; width:80%; height:70%;">  </div></center>');			
-		  $('#divFrame').append(' <center><a href="javascript:CloseButton()"  data-role="button" data-transition="slide" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-inline ui-shadow ui-btn-corner-all"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Fermer</span></span></a> </center>');	
-
-	var request = { u: { login:  window.localStorage.getItem("login"), pw:  window.localStorage.getItem("pw"),urlOrg: window.localStorage.getItem("urlOrg") ,id:" ", name:entityName} };
+		   
+          $('#viewcharts').append('<div id="divFrame">  </div>');
+		  
+		  if( window.screen.width < 700 )
+           {  
+             alert( $(document).width() )
+            $('#divFrame').append('<div  id="cadre" style="width:700px;height:600px;"> </div>');
+           }
+		   else
+		   {
+			$('#divFrame').append('<div  id="cadre" style="width:90%;height:90%;"> </div>');
+		   }
+		  $('#cadre').append('<SELECT style="width:60%;" id="charts" size="1" onChange="charts();">');
+		  $('#cadre').append('</SELECT>');
+		  // orientation
+		  $('#cadre').append('<center> ' +
+		  //<div style="margin-top:20px; margin-down:20px; width:90%; height:70%; overflow:scroll;">'+
+		  '<div id ="chartDivId" style="margin-top:10px; margin-down:10px; width:90%;height:90%"> </div>  </center>');
+		  $('#cadre').append(' <center><a href="javascript:CloseButton()"  data-role="button" data-transition="slide" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-inline ui-shadow ui-btn-corner-all"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Fermer</span></span></a> </center>');	
+         
+	var request = { u: { login: sessionStorage.getItem('cleL'), pw: sessionStorage.getItem('cleP'), id:" ", name:entityName} };
     var jsondata = JSON.stringify(request);
     Type = "POST";
-    Url = "http://localhost/WcfMobileHLI/Service1.svc/entity";   
+    Url = "http://"+sessionStorage.getItem("hostName")+"/WcfMobileHLI/Service1.svc/entity";   
     Data = jsondata;
     ContentType = "application/json; charset=utf-8";
     DataType = "json";
@@ -59,7 +72,7 @@ function charts(){
   $chartId = $('#charts').val();
   var ajaxDataRenderer = new Array();
   var chartName , chartType ;
-  $request = { u: {login:  window.localStorage.getItem("login"), pw:  window.localStorage.getItem("pw"),urlOrg: window.localStorage.getItem("urlOrg"),id:$chartId, name:""} };
+  $request = { u: {login: sessionStorage.getItem('cleL'), pw: sessionStorage.getItem('cleP'),id:$chartId, name:""} };
           $.ajax({
 			type: 'POST',
             async: false,
@@ -102,7 +115,14 @@ $('#chartDivId').empty();
   switch (chartType) {
     case "pie":
            options.seriesDefaults.renderer = $.jqplot.PieRenderer ;
-		   options.legend  = { show:true , location: 'e' } ;
+		   options.legend  = { show:true ,
+		  // placement: 'outside', 
+            rendererOptions: {
+                numberColumns: 3 
+            }, 
+            location:'s',
+            marginTop: '15px'
+        };     
            $.jqplot('chartDivId',ajaxDataRenderer, options);
     break;
  
@@ -121,9 +141,14 @@ $('#chartDivId').empty();
 		   options.seriesDefaults.renderer	= $.jqplot.BarRenderer ;
 		   options.seriesDefaults.rendererOptions.barDirection ='horizontal';
 		   options.axes = {
-                yaxis: { renderer: $.jqplot.CategoryAxisRenderer}
+                yaxis: { renderer: $.jqplot.CategoryAxisRenderer  }
             } ;
 		   $.jqplot('chartDivId',ajaxDataRenderer, options);
+		   
+		  /* var w = parseInt($(".jqplot-yaxis").width(), 10) + parseInt($("#chart").width(), 10);
+           var h = parseInt($(".jqplot-title").height(), 10) + parseInt($(".jqplot-xaxis").height(), 10) + parseInt($("#chart").height(), 10);
+           $("#chartDivId").width(w).height(h);
+            plot.replot(); */
     break;
 	
 	case "Line" :
